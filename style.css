@@ -69,6 +69,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .landing-card {
@@ -78,6 +79,41 @@ body {
   box-shadow: 0 10px 20px rgba(88, 76, 66, 0.1);
   border: 4px solid white;
 }
+
+/* Language Toggle Button */
+.lang-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border: 2px solid var(--primary-green);
+  color: var(--primary-green-dark);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(90, 191, 152, 0.2);
+  z-index: 10;
+}
+
+.lang-toggle:hover {
+  background: var(--primary-green);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(90, 191, 152, 0.3);
+}
+
+.lang-toggle:active {
+  transform: translateY(0);
+}
+
+#lang-toggle-main {
+  position: static;
+  margin-right: 8px;
+}
+
 
 .app-logo {
   font-size: 3rem;
@@ -256,6 +292,13 @@ input:focus, select:focus {
   color: var(--primary-green-dark);
   line-height: 1;
 }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 
 /* Summary Card */
 .bells-card {

@@ -17,6 +17,7 @@
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="i18n.js"></script>
 </head>
 
 <body>
@@ -24,11 +25,12 @@
 
         <!-- 歡迎畫面 (Landing) -->
         <section id="landing-section" class="section landing-container">
+            <button id="lang-toggle" class="lang-toggle">EN</button>
             <div class="landing-card">
                 <div class="app-logo">💰</div>
-                <h1>金金計較<br>私房錢記帳助手</h1>
-                <p class="subtitle">噓...這裡沒有發票，<br>只有快樂與夢想！</p>
-                <button id="go-login-btn" class="btn btn-primary btn-lg">開啟小金庫</button>
+                <h1><span data-i18n="appTitle">金金計較</span><br><span data-i18n="appSubtitle">私房錢記帳助手</span></h1>
+                <p class="subtitle" data-i18n="landingTagline">噓...這裡沒有發票，<br>只有快樂與夢想！</p>
+                <button id="go-login-btn" class="btn btn-primary btn-lg" data-i18n="openVault">開啟小金庫</button>
             </div>
         </section>
 
@@ -37,19 +39,19 @@
             <div class="login-card">
                 <button id="back-to-landing" class="btn-icon back-btn">←</button>
                 <div class="app-logo small">💰</div>
-                <h2>金庫登入</h2>
+                <h2 data-i18n="vaultLogin">金庫登入</h2>
                 <form id="login-form">
                     <div class="form-group">
-                        <label for="username">使用者名稱</label>
+                        <label for="username" data-i18n="username">使用者名稱</label>
                         <input type="text" id="username" name="username" required autocomplete="username"
-                            placeholder="請輸入帳號">
+                            data-i18n="usernamePlaceholder" placeholder="請輸入帳號">
                     </div>
                     <div class="form-group">
-                        <label for="password">通關密碼</label>
+                        <label for="password" data-i18n="password">通關密碼</label>
                         <input type="password" id="password" name="password" required autocomplete="current-password"
-                            placeholder="請輸入密碼">
+                            data-i18n="passwordPlaceholder" placeholder="請輸入密碼">
                     </div>
-                    <button type="submit" class="btn btn-primary">解鎖金庫</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="unlockVault">解鎖金庫</button>
                     <p id="login-error" class="error-msg"></p>
                 </form>
             </div>
@@ -60,33 +62,36 @@
             <header class="header">
                 <div class="brand">
                     <span class="app-logo small">💰</span>
-                    <span id="welcome-msg">小金庫已開</span>
+                    <span id="welcome-msg" data-i18n="vaultOpen">小金庫已開</span>
                 </div>
-                <button id="logout-btn" class="btn btn-sm btn-secondary">登出</button>
+                <div class="header-actions">
+                    <button id="lang-toggle-main" class="lang-toggle">EN</button>
+                    <button id="logout-btn" class="btn btn-sm btn-secondary" data-i18n="logout">登出</button>
+                </div>
             </header>
 
             <!-- 帳戶統計 -->
             <div class="bells-card">
                 <div class="budget-main-display" id="budget-section">
-                    <span class="label-lg">本月還能花</span>
+                    <span class="label-lg" data-i18n="budgetRemaining">本月還能花</span>
                     <div class="amount-hero" id="budget-remaining">$0</div>
 
                     <div class="progress-bar-bg">
                         <div id="budget-progress-bar" class="progress-bar-fill" style="width: 0%"></div>
                     </div>
                     <div class="budget-meta">
-                        <span>總預算: <span id="total-budget">$0</span></span>
+                        <span><span data-i18n="totalBudget">總預算</span>: <span id="total-budget">$0</span></span>
                         <span id="budget-percent">0%</span>
                     </div>
                 </div>
 
                 <div class="bell-stats">
                     <div class="stat-item income">
-                        <span class="label">本月收入</span>
+                        <span class="label" data-i18n="monthlyIncome">本月收入</span>
                         <span id="total-income" class="amount">0</span>
                     </div>
                     <div class="stat-item expense">
-                        <span class="label">本月支出</span>
+                        <span class="label" data-i18n="monthlyExpense">本月支出</span>
                         <span id="total-expense" class="amount">0</span>
                     </div>
                 </div>
@@ -96,11 +101,11 @@
             <div class="action-grid">
                 <button id="btn-add-transaction" class="action-card income">
                     <span class="icon">✏️</span>
-                    <span>記一筆</span>
+                    <span data-i18n="addEntry">記一筆</span>
                 </button>
                 <button id="btn-manage-category" class="action-card expense">
                     <span class="icon">🗂️</span>
-                    <span>管理分類</span>
+                    <span data-i18n="manageCategories">管理分類</span>
                 </button>
             </div>
 
@@ -119,29 +124,29 @@
     <template id="tpl-transaction-form">
         <form id="swal-txn-form" class="swal-form">
             <div class="form-group">
-                <label>日期</label>
+                <label data-i18n="date">日期</label>
                 <input type="date" id="swal-date" class="swal2-input" required>
             </div>
             <div class="form-group">
-                <label>收支</label>
+                <label data-i18n="type">收支</label>
                 <select id="swal-type" class="swal2-select">
-                    <option value="expense">支出</option>
-                    <option value="income">收入</option>
+                    <option value="expense" data-i18n="expense">支出</option>
+                    <option value="income" data-i18n="income">收入</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>類別</label>
+                <label data-i18n="category">類別</label>
                 <select id="swal-category" class="swal2-select">
                     <!-- JS 填入 -->
                 </select>
             </div>
             <div class="form-group">
-                <label>金額</label>
-                <input type="number" id="swal-amount" class="swal2-input" placeholder="多少錢？" min="1" required>
+                <label data-i18n="amount">金額</label>
+                <input type="number" id="swal-amount" class="swal2-input" data-i18n="amountPlaceholder" placeholder="多少錢？" min="1" required>
             </div>
             <div class="form-group">
-                <label>備註</label>
-                <input type="text" id="swal-note" class="swal2-input" placeholder="例如：買卡片、聚餐">
+                <label data-i18n="note">備註</label>
+                <input type="text" id="swal-note" class="swal2-input" data-i18n="notePlaceholder" placeholder="例如：買卡片、聚餐">
             </div>
         </form>
     </template>

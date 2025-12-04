@@ -12,6 +12,9 @@
 
 ### ✨ Features
 
+- **🌐 Bilingual Support**: Switch between Traditional Chinese and English with one click
+  - Language preference saved automatically
+  - Real-time interface updates
 - **User Authentication**: Secure login system with JWT token authentication
 - **Dashboard Overview**: 
   - Monthly income and expense summary
@@ -115,6 +118,7 @@
 moneyTracker-frontend/
 ├── index.html          # Main HTML file with app structure
 ├── app.js              # Core application logic and API calls
+├── i18n.js             # Internationalization and translation functions
 ├── config.js           # API configuration
 ├── style.css           # Complete styling and animations
 ├── icon.png            # App icon/logo
@@ -138,6 +142,35 @@ const CONFIG = {
   API_BASE_URL: "http://localhost:3000",  // Change this to your backend URL
 };
 ```
+### 🌐 Language Support
+
+The app supports **bilingual switching** between Traditional Chinese (繁體中文) and English:
+
+- **Switch Language**: Click the language toggle button in the top-right corner
+- **Default Language**: Traditional Chinese (可在初次載入時根據瀏覽器語言自動選擇)
+- **Auto-Save**: Language preference is saved in browser localStorage
+- **Coverage**: All UI elements, forms, dialogs, and messages
+
+#### Supported Languages
+- 🇹🇼 **繁體中文** (Traditional Chinese) - Default
+- 🇺🇸 **English**
+
+#### Adding New Translations
+
+To add new translation strings, edit `i18n.js`:
+
+```javascript
+const translations = {
+  zh: {
+    yourKey: "你的中文文字",
+  },
+  en: {
+    yourKey: "Your English text",
+  }
+};
+```
+
+Then use `t("yourKey")` in your code or add `data-i18n="yourKey"` to HTML elements.
 
 ### 🌐 Browser Support
 
@@ -151,6 +184,7 @@ const CONFIG = {
 ### 📝 License
 
 MIT
+MIT
 
 ---
 
@@ -162,6 +196,9 @@ MIT
 
 ### ✨ 主要功能
 
+- **🌐 雙語支援**：一鍵切換繁體中文與英文
+  - 自動儲存語言偏好
+  - 即時更新介面
 - **使用者驗證**：採用 JWT token 的安全登入系統
 - **儀表板總覽**：
   - 每月收支摘要
@@ -256,17 +293,18 @@ MIT
 
 4. **設定預算**：
    - 點擊預算區域
-   - 輸入您的每月支出上限
-   - 即時追蹤支出與預算的對比
-
 ### 📁 專案結構
 
 ```
 moneyTracker-frontend/
 ├── index.html          # 主要 HTML 檔案與應用程式結構
 ├── app.js              # 核心應用程式邏輯與 API 呼叫
+├── i18n.js             # 國際化與翻譯功能
 ├── config.js           # API 設定
 ├── style.css           # 完整樣式與動畫
+├── icon.png            # 應用程式圖示
+└── README.md           # 本檔案
+``` style.css           # 完整樣式與動畫
 ├── icon.png            # 應用程式圖示
 └── README.md           # 本檔案
 ```
@@ -288,6 +326,36 @@ const CONFIG = {
   API_BASE_URL: "http://localhost:3000",  // 修改為您的後端網址
 };
 ```
+
+### 🌐 語言支援
+
+本應用程式支援**中英文雙語切換**：
+
+- **切換語言**：點擊右上角的語言切換按鈕
+- **預設語言**：繁體中文（可根據瀏覽器語言自動選擇）
+- **自動儲存**：語言偏好儲存於瀏覽器 localStorage
+- **涵蓋範圍**：所有 UI 元素、表單、對話框與訊息
+
+#### 支援的語言
+- 🇹🇼 **繁體中文** - 預設
+- 🇺🇸 **English**
+
+#### 新增翻譯
+
+要新增新的翻譯文字，請編輯 `i18n.js`：
+
+```javascript
+const translations = {
+  zh: {
+    yourKey: "你的中文文字",
+  },
+  en: {
+    yourKey: "Your English text",
+  }
+};
+```
+
+然後在程式碼中使用 `t("yourKey")`，或在 HTML 元素中加入 `data-i18n="yourKey"` 屬性。
 
 ### 🌐 瀏覽器支援
 
