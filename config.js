@@ -1,4 +1,4 @@
 // API 設定
 const CONFIG = {
-  API_BASE_URL: "http://moneytracker.zeabur.app",
+  API_BASE_URL: "https://moneytracker.zeabur.app",
 };
